@@ -1,0 +1,214 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="utf-8" />  
+    <title>My Slider</title>  
+    <link rel="stylesheet" href="1.css">
+    <style type="text/css">  
+        body {  
+            margin: 0;  
+            background: #e6e6e6;  
+        }  
+        .showSlide {  
+            display: none  
+        }  
+            .showSlide img {  
+                width: 100%;  
+            }  
+        .slidercontainer {  
+            max-width: 1000px;  
+            position: relative;  
+            margin: auto;  
+        }  
+        .left, .right {  
+            cursor: pointer;  
+            position: absolute;  
+            top: 50%;  
+            width: auto;  
+            padding: 16px;  
+            margin-top: -22px;  
+            color: white;  
+            font-weight: bold;  
+            font-size: 18px;  
+            transition: 0.6s ease;  
+            border-radius: 0 3px 3px 0;  
+        }  
+        .right {  
+            right: 0;  
+            border-radius: 3px 0 0 3px;  
+        }  
+            .left:hover, .right:hover {  
+                background-color: rgba(115, 115, 115, 0.8);  
+            }  
+        .content {  
+            color: #eff5d4;  
+            font-size: 30px;  
+            padding: 8px 12px;  
+            position: absolute;  
+            top: 10px;  
+            width: 100%;  
+            text-align: center;  
+        }  
+        .active {  
+            background-color: #717171;  
+        }  
+        /* Fading animation */  
+        .fade {  
+            -webkit-animation-name: fade;  
+            -webkit-animation-duration: 1.5s;  
+            animation-name: fade;  
+            animation-duration: 1.5s;  
+        }  
+        @-webkit-keyframes fade {  
+            from {  
+                opacity: .4  
+            }  
+            to {  
+                opacity: 1  
+            }  
+        }  
+  
+        @keyframes fade {  
+            from {  
+                opacity: .4  
+            }  
+            to {  
+                opacity: 1  
+            }  
+        }  
+    </style>  
+</head>  
+<body>  
+
+    <!--heading -->
+        
+<div class="topnav" id="myTopnav">
+    <a class="logo" href="http://#" target="_blank" rel="noopener noreferrer">Nirvana Yoga </a>
+      <div class="dropdown">
+        <button class="dropbtn">Home
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div> 
+      <div class="dropdown">
+          <button class="dropbtn">Services 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div> 
+      <div class="dropdown">
+          <button class="dropbtn">Book now 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Book your opd</a>
+            <a href="#">Join weight loss program</a>
+            <a href="#">Join upcoming session</a>
+          </div>
+        </div> 
+        <div class="dropdown">
+          <button class="dropbtn">About 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">About us</a>
+            <a href="#">About our yogacharyas</a>
+            <a href="#">Our vision</a>
+          </div>
+        </div> 
+        <div class="dropdown">
+          <button class="dropbtn">Products
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Online yoga class</a>
+            <a href="#">Yoga at your home</a>
+            <a href="#">Corporate yoga class</a>
+          </div>
+        </div> 
+        <div class="dropdown">
+          <button class="dropbtn">Contact
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">contact no</a>
+            <a href="#">Mail id</a>
+            <a href="#">Contact 2</a>
+          </div>
+        </div> 
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+
+
+
+    <!--sliding-->
+    <div class="slidercontainer">  
+        <div class="showSlide fade">  
+            <img src="tanmay.jpg" width="1400px">  
+            <div class="content">Slide1 heading</div>  
+        </div>  
+        <div class="showSlide fade">  
+            <img src="back1.jpg" width="1400px">  
+            <div class="content">Slide2 heading</div>  
+        </div>  
+  
+        <div class="showSlide fade">  
+            <img src="1a.jpeg" width="1400px">  
+            <div class="content">Slide3 heading</div>  
+        </div>  
+        <div class="showSlide fade">  
+            <img src="2a.jpeg" width="1400px">  
+            <div class="content">Slide4 heading</div>  
+        </div>  
+        <!-- Navigation arrows -->  
+        <a class="left" onclick="nextSlide(-1)">❮</a>  
+        <a class="right" onclick="nextSlide(1)">❯</a>  
+    </div>  
+  
+    <script type="text/javascript">  
+        var slide_index = 1;  
+        displaySlides(slide_index);  
+  
+        function nextSlide(n) {  
+            displaySlides(slide_index += n);  
+        }  
+  
+        function currentSlide(n) {  
+            displaySlides(slide_index = n);  
+        }  
+  
+        function displaySlides(n) {  
+            var i;  
+            var slides = document.getElementsByClassName("showSlide");  
+            if (n > slides.length) { slide_index = 1 }  
+            if (n < 1) { slide_index = slides.length }  
+            for (i = 0; i < slides.length; i++) {  
+                slides[i].style.display = "none";  
+            }  
+            slides[slide_index - 1].style.display = "block";  
+        }  
+    </script>  
+    <div>
+        <p>
+            As we all commit ourselves to battle the CoronaVirus, the biggest calamity has struck the poor people, Homeless, Street & Slum & Person with Disability'' families that have been severely impacted by the virus and the lockdowns caused because of it in India. At RSKS India, we don't wish to leave any stone unturned to do whatever we can to reduce the struggles of all Poor.
+
+
+ 
+
+As we all are aware of the pandemic Novel COVID-19 that has engulfed the entire world, and poses a serious threat to the well-being and mobility of each individual. COVID-19 can cause mild to severe illness; most severe illness occurs in older adults. At RSKS India we are extremely concerned and conscious about the health of our employees as well as our partners, Donors and thousands of beneficiaries who are a part of the family and to ensure, this RSKS Team members are also doing awareness programs at all our workshops and training centre to ensure the safety of people. RSKS India encourages everyone to take precautions by social distancing, following proper sanitary protocols and reaching out to health authorities in suspected cases.
+
+We would also like to take this opportunity to reiterate the World Health Organisation guidelines and urge you to take the necessary precautions to safeguard yourself from COVID-19;
+        </p>
+    </div>
+  
+</body>  
+</html>   
